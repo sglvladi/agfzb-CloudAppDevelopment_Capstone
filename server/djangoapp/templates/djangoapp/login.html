@@ -31,7 +31,7 @@
             {% if user.is_authenticated %}
                 <div class="rightalign">
                     <div class="dropdown">
-                        <button class="dropbtn">{{ user.first_name }}</button>
+                        <button class="btn btn-primary">{{ user.first_name }} ({{ user.username }})</button>
                         <div class="dropdown-content">
                             <a href="{% url 'djangoapp:logout' %}">Logout</a>
                         </div>
@@ -40,7 +40,7 @@
             {% else %}
                 <div class="rightalign">
                     <div class="dropdown">
-                        <button class="dropbtn">Account</button>
+                        <button class="btn btn-primary">Account</button>
                         <div class="dropdown-content">
                             <a href="{% url 'djangoapp:login' %}">Login</a>
                             <a href="{% url 'djangoapp:registration' %}">Signup</a>
