@@ -3,9 +3,90 @@
 <head>
     <meta charset="UTF-8">
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'djangoapp/custom.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-    <body>
-    <!--Add a registration form here -->
-    </body>
-</html>
+<body>
+
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Best Cars</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'djangoapp:index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'djangoapp:about' %}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'djangoapp:contact' %}">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <div class="rightalign">
+                    <div class="dropdown">
+                        <button class="dropbtn">{{ user.first_name }}</button>
+                        <div class="dropdown-content">
+                            <a href="{% url 'djangoapp:logout' %}">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="rightalign">
+                    <div class="dropdown">
+                        <button class="dropbtn">Account</button>
+                        <div class="dropdown-content">
+                            <a href="{% url 'djangoapp:login' %}">Login</a>
+                            <a href="{% url 'djangoapp:registration' %}">Signup</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </ul>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Stylize Registration form -->
+<form action="{% url 'djangoapp:registration' %}" method="post">
+    <div class="container"> <!--Style root div with .container class -->
+        {% csrf_token %}
+        <h1>Sign Up</h1>
+        <hr>
+        <div class="form-group"> <!--Style second div with .form-group class -->
+            <label for="username"><b>User Name</b></label>
+            <input type="text" class="form-control" placeholder="Enter User Name: " name="username" required>
+            <!--Style input with .form-control class -->
+            <label for="firstname"><b>First Name</b></label>
+            <input type="text" class="form-control" placeholder="Enter First Name: " name="firstname" required>
+            <!--Style input with .form-control class -->
+            <label for="lastname"><b>Last Name</b></label>
+            <input type="text" class="form-control" placeholder="Enter Last Name: " name="lastname" required>
+            <!--Style input with .form-control class -->
+            <label for="psw"><b>Password</b></label>
+            <input type="password" class="form-control" placeholder="Enter Password: " name="psw" required>
+            <!--Style input with .form-control class -->
+            {% if message %}
+                <div class="alert alert-warning mt-2">
+                    <!--Style the message paragraph with .alert and .alert-warning class -->
+                    {{ message }}
+                </div>
+            {% endif %}
+            <button class="btn btn-primary mt-2" type="submit">Sign up</button>
+            <!--Style button with .btn and .btn-primary class -->
+        </div>
+    </div>
+</form>
+
+</body>
