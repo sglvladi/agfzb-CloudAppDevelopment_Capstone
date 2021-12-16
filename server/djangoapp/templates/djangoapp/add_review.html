@@ -5,7 +5,19 @@
     <title>Dealership Review</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'djangoapp/custom.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script
+        src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 </head>
 <body>
 
@@ -94,12 +106,13 @@
         <button class="btn btn-primary mt-2" type="submit">Submit</button>
         <!--Style button with .btn and .btn-primary class -->
     </form>
+    <script type="text/javascript">
+        $('.date-own').datepicker({
+            format: 'dd/mm/yyyy'
+        });
+    </script>
 </div>
 
 </body>
-<script type="text/javascript">
-    $('.date-own').datepicker({
-        format: 'mm/dd/yyyy'
-    });
-</script>
+
 </html>
