@@ -19,6 +19,9 @@ RUN pip install -r requirements.txt
 # Copy the rest of the files
 COPY . $APP
 
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
 EXPOSE 8000
 
 RUN chmod +x /app/entrypoint.sh
